@@ -1,0 +1,30 @@
+Text:Hand held VOC Analyser
+Text:Roboscientific Ltd
+Text:Espace North
+Text:Wisbech Road
+Text:Littleport
+Text:Cambridgeshire, UK
+Text:CB6 1RA
+Text:Data is protected by RoboScientific Limited
+Name:Test 24                        // The name of the test run
+Date:                               // The current date (no value required)
+Time:                               // The current time (no value required)
+SamplesPerSec:4                     // The number of samples aquired each second
+Repeat:1                            // The number of test iterations
+SwitchOffSec:1                      // The timeout before unit shuts down (value * 30 seconds)
+Baseline:5,70,Off                   // The BASELINE stage settings (time, pump PWM, divertor)
+Absorb:10,80,On                     // The ABSORB stage settings (time, pump PWM, divertor)
+Pause:1,0,Off                       // The PAUSE stage settings (time, pump PWM, divertor)
+Desorb:24,80,Off                    // The DESORB stage settings (time, pump PWM, divertor)
+Flush:10,100,Off                    // The FLUSH stage settings (time, pump PWM, divertor)
+Wait:5,70,Off                       // The WAIT stage settings (time, pump PWM, divertor)
+T1:1
+T2:2
+T3:3
+T4:4
+T5:5
+T6:6
+T7:7
+StartHour:8
+StartMinute:9
+RepeatCount:10
