@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
-//#include <iostream>
+#include <string.h>
 #include <stdio.h>
 
 #include "parsing.h"
