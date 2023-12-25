@@ -9,7 +9,7 @@
 //}
 
 int main()
-{
+{   //---------Test------------------
 	FILE *fp;
    //std::cout << "Hello World!\n";
    char fn[] = "SettingsFileExample.txt";
