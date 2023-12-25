@@ -7,10 +7,10 @@
 
 #define PRINT_TYPE(x) _Generic((x) \
     ,char*: EVT_string \
-    ,uint8_t: EVT_uint8 \
+    ,uint8_t: EVT_Uint8 \
 )
 
-typedef enum {EVT_string, EVT_uint8, EVT_NumOfEl} E_VariableType;
+typedef enum {EVT_string, EVT_Uint8, EVT_NumOfEl} E_VariableType;
 
 typedef struct
 {
@@ -26,6 +26,9 @@ typedef struct
 extern "C" {
 #endif
 
+    
+bool CmpString(char* str, char* cmp);
+int strncmpi(const char* s1, const char* s2, size_t n);
 void mainParameterInputA(const char* buff, bool * settings_changed);
 
 
