@@ -36,7 +36,7 @@ static bool ReadLn(FILE* fp, char* buff, int len) {
  
     if ((pos) != NULL) {
         pos = (((uint64_t)buff) & 0xffffffff00000000) + (((uint64_t)pos) & 0xffffffff);
-        *pos = '0/';
+        *pos = '\0';
         //buff[pos - buff] = '\0';
     }
     return true;
@@ -175,19 +175,20 @@ void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
             //    }
             //}
             //else
-                if (CmpString(buff, "repeat:")) {
-                int temp = 0;
-                int n = sscanf(&buff[7], "%d", &temp);
-                //        printf("n=%d\n", n);
-                if ((n == 1) && (temp != 0)) {
-                    if (Params->Base.Iterations != temp) {
-                        //                       Log("repeats changed from %d to %d", Params->Base.Iterations, temp);
-                        Params->Base.Iterations = temp;
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "samplespersec:")) {
+            //    if (CmpString(buff, "repeat:")) {
+            //    int temp = 0;
+            //    int n = sscanf(&buff[7], "%d", &temp);
+            //    //        printf("n=%d\n", n);
+            //    if ((n == 1) && (temp != 0)) {
+            //        if (Params->Base.Iterations != temp) {
+            //            //                       Log("repeats changed from %d to %d", Params->Base.Iterations, temp);
+            //            Params->Base.Iterations = temp;
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else 
+            if (CmpString(buff, "samplespersec:")) {
                 int temp;
                 if (sscanf(&buff[14], "%d", &temp) == 1) {
                     if (Params->Base.SamplesPerSec != temp) {
