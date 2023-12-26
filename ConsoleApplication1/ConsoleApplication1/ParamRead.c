@@ -36,34 +36,34 @@ static bool ReadLn(FILE* fp, char* buff, int len) {
  
     if ((pos) != NULL) {
         pos = (((uint64_t)buff) & 0xffffffff00000000) + (((uint64_t)pos) & 0xffffffff);
-        *pos = '0/';
+        *pos = '\0';
         //buff[pos - buff] = '\0';
     }
     return true;
 }
 
-int strncmpi(const char* s1, const char* s2, size_t n)
-{
-    while (n && *s1 && (toupper(*s1) == toupper(*s2)))
-    {
-        ++s1;
-        ++s2;
-        --n;
-    }
-    if (n == 0)
-    {
-        return 0;
-    }
-    else
-    {
-        return (toupper(*(unsigned char*)s1) - toupper(*(unsigned char*)s2));
-    }
-}
+//int strncmpi(const char* s1, const char* s2, size_t n)
+//{
+//    while (n && *s1 && (toupper(*s1) == toupper(*s2)))
+//    {
+//        ++s1;
+//        ++s2;
+//        --n;
+//    }
+//    if (n == 0)
+//    {
+//        return 0;
+//    }
+//    else
+//    {
+//        return (toupper(*(unsigned char*)s1) - toupper(*(unsigned char*)s2));
+//    }
+//}
 
 
-bool CmpString(const char* str, const char* cmp) {
-    return  strncmpi(str, cmp, strlen(cmp)) == 0;
-}
+//bool CmpString(const char* str, const char* cmp) {
+//    return  strncmpi(str, cmp, strlen(cmp)) == 0;
+//}
 
 //void Log(const char* fmt, ...)
 //{
@@ -154,38 +154,41 @@ typedef struct
 void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
     while (!feof(fp_h)) {
         if (ReadLn(fp_h, buff, sizeof(buff))) {
-            if (CmpString(buff, "name:")) {
-                strcpy(ExperimentName, &buff[5]);
-                ExperimentName[19] = '\0';  // Truncate to 20 chars
-                // remove trailing zeroes
-                for (int i = (strlen(ExperimentName) - 1); i > 0; i--) {
-                    if (ExperimentName[i] != ' ')
-                        break;
-                    ExperimentName[i] = '\0';
-                }
-                if (strcmp((const char*)&Params->Name, ExperimentName) != 0) {
-                    //                   Log("name changed from \"%s\" to \"%s\"", Params->Name, ExperimentName);
-                                       // backup RAM for name limited to 19 characters
-                    for (int i = 0; i < 19; i++) {
-                        Params->Name[i] = ExperimentName[i];
-                    }
-                    Params->Name[19] = '\0';
-                    settings_changed = true;
-                }
-            }
-            else if (CmpString(buff, "repeat:")) {
-                int temp = 0;
-                int n = sscanf(&buff[7], "%d", &temp);
-                //        printf("n=%d\n", n);
-                if ((n == 1) && (temp != 0)) {
-                    if (Params->Base.Iterations != temp) {
-                        //                       Log("repeats changed from %d to %d", Params->Base.Iterations, temp);
-                        Params->Base.Iterations = temp;
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "samplespersec:")) {
+            mainParameterInputA(buff, &settings_changed);//(const char* buff, bool* settings_changed)
+            //if (CmpString(buff, "name:")) {
+            //    strcpy(ExperimentName, &buff[5]);
+            //    ExperimentName[19] = '\0';  // Truncate to 20 chars
+            //    // remove trailing zeroes
+            //    for (int i = (strlen(ExperimentName) - 1); i > 0; i--) {
+            //        if (ExperimentName[i] != ' ')
+            //            break;
+            //        ExperimentName[i] = '\0';
+            //    }
+            //    if (strcmp((const char*)&Params->Name, ExperimentName) != 0) {
+            //        //                   Log("name changed from \"%s\" to \"%s\"", Params->Name, ExperimentName);
+            //                           // backup RAM for name limited to 19 characters
+            //        for (int i = 0; i < 19; i++) {
+            //            Params->Name[i] = ExperimentName[i];
+            //        }
+            //        Params->Name[19] = '\0';
+            //        settings_changed = true;
+            //    }
+            //}
+            //else
+            //    if (CmpString(buff, "repeat:")) {
+            //    int temp = 0;
+            //    int n = sscanf(&buff[7], "%d", &temp);
+            //    //        printf("n=%d\n", n);
+            //    if ((n == 1) && (temp != 0)) {
+            //        if (Params->Base.Iterations != temp) {
+            //            //                       Log("repeats changed from %d to %d", Params->Base.Iterations, temp);
+            //            Params->Base.Iterations = temp;
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else 
+            if (CmpString(buff, "samplespersec:")) {
                 int temp;
                 if (sscanf(&buff[14], "%d", &temp) == 1) {
                     if (Params->Base.SamplesPerSec != temp) {
