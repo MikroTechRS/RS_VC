@@ -188,17 +188,7 @@ void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
             //    }
             //}
             //else 
-            if (CmpString(buff, "samplespersec:")) {
-                int temp;
-                if (sscanf(&buff[14], "%d", &temp) == 1) {
-                    if (Params->Base.SamplesPerSec != temp) {
-                        //                       Log("samples per second changed from %d to %d", Params->Base.SamplesPerSec, temp);
-                        Params->Base.SamplesPerSec = temp;
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "baseline:")) {
+             if (CmpString(buff, "baseline:")) {
                 if (GetPhase(&buff[9], &Baseline)) {
                     if (PhaseChanged(&Params->Baseline, &Baseline)) {
                         Params->Baseline = Baseline;

@@ -84,7 +84,19 @@ void ParameterInputUint8(void* ParametrData, const char* buff, bool* settings_ch
         }
     }
 }
-
+void ParameterInputSamplespersec(void* ParametrData, const char* buff, bool* settings_changed)
+{
+    if (CmpString(buff, (char*)(((ParameterInput_t*)ParametrData)->string))) {
+        int temp;
+        if (sscanf(&buff[strlen((char*)(((ParameterInput_t*)ParametrData)->string))], "%d", &temp) == 1) {
+            if (*((uint8_t*)(((ParameterInput_t*)ParametrData)->parameter)) != temp) {
+                //                       Log("samples per second changed from %d to %d", Params->Base.SamplesPerSec, temp);
+                *((uint8_t*)(((ParameterInput_t*)ParametrData)->parameter)) = temp;
+                settings_changed = true;
+            }
+        }
+    }
+}
 //typedef struct
 //{
 //    const char* string;
@@ -98,6 +110,7 @@ ParameterInput_t ParameterInput[] =
 {
     {"name:",ParameterInputName,NULL,(void*)Params.Name,EVT_string}
    ,{"repeat:",ParameterInputUint8,NULL,(void*)(&(Params.Base.Iterations)),EVT_Uint8}
+   ,{"samplespersec:",ParameterInputSamplespersec,NULL,(void*)(&(Params.Base.SamplesPerSec)),EVT_Uint8}
    ,{NULL,NULL,NULL,NULL,EVT_NumOfEl}
 };
 
