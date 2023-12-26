@@ -8,9 +8,10 @@
 #define PRINT_TYPE(x) _Generic((x) \
     ,char*: EVT_string \
     ,uint8_t: EVT_Uint8 \
+    ,uint32_t:EVT_Uint32 \
 )
 
-typedef enum {EVT_string, EVT_Uint8, EVT_NumOfEl} E_VariableType;
+typedef enum {EVT_string, EVT_Uint8,EVT_Uint32, EVT_NumOfEl} E_VariableType;
 
 typedef struct
 {

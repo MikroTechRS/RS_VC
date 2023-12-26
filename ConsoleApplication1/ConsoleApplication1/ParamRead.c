@@ -252,7 +252,7 @@ void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
                     }
                 }
             }
-            else if (CmpString(buff, "T1:")) {
+        /*    else if (CmpString(buff, "T1:")) {
                 int temp;
                 if (sscanf(&buff[3], "%d", &temp) == 1) {
                     if (Params->T1 != temp) {
@@ -321,7 +321,7 @@ void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
                         settings_changed = true;
                     }
                 }
-            }
+            }*/
             else if (CmpString(buff, "StartHour:")) {
                 int temp;
                 if (sscanf(&buff[strlen("StartHour:")], "%d", &temp) == 1) {

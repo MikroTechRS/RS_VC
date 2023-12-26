@@ -97,7 +97,22 @@ void ParameterInputSamplespersec(void* ParametrData, const char* buff, bool* set
         }
     }
 }
-//typedef struct
+
+
+void ParameterInputUint32(void* ParametrData, const char* buff, bool* settings_changed){ 
+    if (CmpString(buff, (char*)(((ParameterInput_t*)ParametrData)->string))) {
+        int temp;
+        if (sscanf(&buff[strlen((char*)(((ParameterInput_t*)ParametrData)->string))], "%d", &temp)  ==1){  //   printf("temp=%d\n", temp); 
+            if (*((uint32_t*)(((ParameterInput_t*)ParametrData)->parameter)) != temp) {
+                *((uint32_t*)(((ParameterInput_t*)ParametrData)->parameter))  = temp;
+                settings_changed = true;
+            }
+        }
+    } 
+}
+ 
+
+//typedef struct   
 //{
 //    const char* string;
 //    void (*func)(void* ParametrData, const char* buff, bool* settings_changed);
@@ -111,6 +126,15 @@ ParameterInput_t ParameterInput[] =
     {"name:",ParameterInputName,NULL,(void*)Params.Name,EVT_string}
    ,{"repeat:",ParameterInputUint8,NULL,(void*)(&(Params.Base.Iterations)),EVT_Uint8}
    ,{"samplespersec:",ParameterInputSamplespersec,NULL,(void*)(&(Params.Base.SamplesPerSec)),EVT_Uint8}
+
+   ,{"T1:",ParameterInputUint32,NULL,(void*)(&(Params.T1)),EVT_Uint32}
+   ,{"T2:",ParameterInputUint32,NULL,(void*)(&(Params.T2)),EVT_Uint32}
+   ,{"T3:",ParameterInputUint32,NULL,(void*)(&(Params.T3)),EVT_Uint32}
+   ,{"T4:",ParameterInputUint32,NULL,(void*)(&(Params.T4)),EVT_Uint32}
+   ,{"T5:",ParameterInputUint32,NULL,(void*)(&(Params.T5)),EVT_Uint32}
+   ,{"T6:",ParameterInputUint32,NULL,(void*)(&(Params.T6)),EVT_Uint32}
+   ,{"T7:",ParameterInputUint32,NULL,(void*)(&(Params.T7)),EVT_Uint32}
+
    ,{NULL,NULL,NULL,NULL,EVT_NumOfEl}
 };
 
@@ -122,5 +146,7 @@ void mainParameterInputA(const char* buff, bool * settings_changed)
         {ParameterInput[i].func(ParameterInput+i,buff,settings_changed);
          i++;
         };
+
+
 };
 
