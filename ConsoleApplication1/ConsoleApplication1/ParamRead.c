@@ -188,16 +188,17 @@ void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
             //    }
             //}
             //else 
-             if (CmpString(buff, "baseline:")) {
-                if (GetPhase(&buff[9], &Baseline)) {
-                    if (PhaseChanged(&Params->Baseline, &Baseline)) {
-                        Params->Baseline = Baseline;
-                        //                       Log("Baseline changed to \"%s\"", &buff[9]);
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "absorb:")) {
+            // if (CmpString(buff, "baseline:")) {
+            //    if (GetPhase(&buff[9], &Baseline)) {
+            //        if (PhaseChanged(&Params->Baseline, &Baseline)) {
+            //            Params->Baseline = Baseline;
+            //            //                       Log("Baseline changed to \"%s\"", &buff[9]);
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else 
+            if (CmpString(buff, "absorb:")) {
                 if (GetPhase(&buff[7], &Absorb)) {
                     if (PhaseChanged(&Params->Absorb, &Absorb)) {
                         Params->Absorb = Absorb;

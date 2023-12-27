@@ -98,6 +98,7 @@ void ParameterInputSamplespersec(void* ParametrData, const char* buff, bool* set
     }
 }
 
+<<<<<<< HEAD
 
 void ParameterInputUint32(void* ParametrData, const char* buff, bool* settings_changed){ 
     if (CmpString(buff, (char*)(((ParameterInput_t*)ParametrData)->string))) {
@@ -113,6 +114,30 @@ void ParameterInputUint32(void* ParametrData, const char* buff, bool* settings_c
  
 
 //typedef struct   
+=======
+static phase_t phase;
+
+static bool PhaseChanged(phase_t* tgt, phase_t* src) {
+    return (tgt->Time != src->Time)
+        | (tgt->PumpPWM != src->PumpPWM)
+        | (tgt->Divert != src->Divert);
+}
+
+
+void ParameterInputPhase(void* ParametrData, const char* buff, bool* settings_changed)
+{
+    if (CmpString(buff, (char*)(((ParameterInput_t*)ParametrData)->string))) {
+        if (GetPhase(&buff[strlen((char*)(((ParameterInput_t*)ParametrData)->string))], &phase)) {
+            if (PhaseChanged((phase_t*)(((ParameterInput_t*)ParametrData)->parameter), &phase)) {
+                *((phase_t*)(((ParameterInput_t*)ParametrData)->parameter)) = phase;
+                //                       Log("Baseline changed to \"%s\"", &buff[9]);
+                settings_changed = true;
+            }
+        }
+    }
+}
+//typedef struct
+>>>>>>> d8c0d53 ("baseline:" work)
 //{
 //    const char* string;
 //    void (*func)(void* ParametrData, const char* buff, bool* settings_changed);
@@ -126,6 +151,7 @@ ParameterInput_t ParameterInput[] =
     {"name:",ParameterInputName,NULL,(void*)Params.Name,EVT_string}
    ,{"repeat:",ParameterInputUint8,NULL,(void*)(&(Params.Base.Iterations)),EVT_Uint8}
    ,{"samplespersec:",ParameterInputSamplespersec,NULL,(void*)(&(Params.Base.SamplesPerSec)),EVT_Uint8}
+<<<<<<< HEAD
 
    ,{"T1:",ParameterInputUint32,NULL,(void*)(&(Params.T1)),EVT_Uint32}
    ,{"T2:",ParameterInputUint32,NULL,(void*)(&(Params.T2)),EVT_Uint32}
@@ -134,6 +160,9 @@ ParameterInput_t ParameterInput[] =
    ,{"T5:",ParameterInputUint32,NULL,(void*)(&(Params.T5)),EVT_Uint32}
    ,{"T6:",ParameterInputUint32,NULL,(void*)(&(Params.T6)),EVT_Uint32}
    ,{"T7:",ParameterInputUint32,NULL,(void*)(&(Params.T7)),EVT_Uint32}
+=======
+   ,{"baseline:",ParameterInputPhase,NULL,(void*)(&(Params.Baseline)),EVT_Uint8}
+>>>>>>> d8c0d53 ("baseline:" work)
 
    ,{NULL,NULL,NULL,NULL,EVT_NumOfEl}
 };
