@@ -188,7 +188,6 @@ void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
             //    }
             //}
             //else 
-            else*/ if (CmpString(buff, "baseline:")) {
              if (CmpString(buff, "baseline:")) {
                 if (GetPhase(&buff[9], &Baseline)) {
                     if (PhaseChanged(&Params->Baseline, &Baseline)) {

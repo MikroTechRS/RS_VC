@@ -15,7 +15,7 @@ typedef enum {EVT_string, EVT_Uint8,EVT_Uint32, EVT_NumOfEl} E_VariableType;
 
 typedef struct
 {
-  const char *Name;
+  const char *string;
   //void (*func)(struct ParameterInput_t *ParametrData,const char* buff, bool * settings_changed);
   void (*func)(void* ParametrData, const char* buff, bool* settings_changed);
   const char *format;
