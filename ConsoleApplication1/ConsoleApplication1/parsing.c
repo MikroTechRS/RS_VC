@@ -97,6 +97,28 @@ void ParameterInputSamplespersec(void* ParametrData, const char* buff, bool* set
         }
     }
 }
+
+static phase_t phase;
+
+static bool PhaseChanged(phase_t* tgt, phase_t* src) {
+    return (tgt->Time != src->Time)
+        | (tgt->PumpPWM != src->PumpPWM)
+        | (tgt->Divert != src->Divert);
+}
+
+
+void ParameterInputPhase(void* ParametrData, const char* buff, bool* settings_changed)
+{
+    if (CmpString(buff, (char*)(((ParameterInput_t*)ParametrData)->string))) {
+        if (GetPhase(&buff[strlen((char*)(((ParameterInput_t*)ParametrData)->string))], &phase)) {
+            if (PhaseChanged((phase_t*)(((ParameterInput_t*)ParametrData)->parameter), &phase)) {
+                *((phase_t*)(((ParameterInput_t*)ParametrData)->parameter)) = phase;
+                //                       Log("Baseline changed to \"%s\"", &buff[9]);
+                settings_changed = true;
+            }
+        }
+    }
+}
 //typedef struct
 //{
 //    const char* string;
@@ -111,6 +133,8 @@ ParameterInput_t ParameterInput[] =
     {"name:",ParameterInputName,NULL,(void*)Params.Name,EVT_string}
    ,{"repeat:",ParameterInputUint8,NULL,(void*)(&(Params.Base.Iterations)),EVT_Uint8}
    ,{"samplespersec:",ParameterInputSamplespersec,NULL,(void*)(&(Params.Base.SamplesPerSec)),EVT_Uint8}
+   ,{"baseline:",ParameterInputPhase,NULL,(void*)(&(Params.Baseline)),EVT_Uint8}
+
    ,{NULL,NULL,NULL,NULL,EVT_NumOfEl}
 };
 
