@@ -8,7 +8,7 @@
 
 Params_t Params;
 
-static phase_t Baseline;
+//static phase_t Baseline;
 static phase_t Absorb;
 static phase_t Pause;
 static phase_t Desorb;
