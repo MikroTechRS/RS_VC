@@ -84,7 +84,7 @@ void ParameterInputUint8(void* ParametrData, const char* buff, bool* settings_ch
         }
     }
 }
-void ParameterInputSamplespersec(void* ParametrData, const char* buff, bool* settings_changed)
+void ParameterInputTime(void* ParametrData, const char* buff, bool* settings_changed)
 {
     if (CmpString(buff, (char*)(((ParameterInput_t*)ParametrData)->string))) {
         int temp;
@@ -110,7 +110,10 @@ ParameterInput_t ParameterInput[] =
 {
     {"name:",ParameterInputName,NULL,(void*)Params.Name,EVT_string}
    ,{"repeat:",ParameterInputUint8,NULL,(void*)(&(Params.Base.Iterations)),EVT_Uint8}
-   ,{"samplespersec:",ParameterInputSamplespersec,NULL,(void*)(&(Params.Base.SamplesPerSec)),EVT_Uint8}
+   ,{"samplespersec:",ParameterInputTime,NULL,(void*)(&(Params.Base.SamplesPerSec)),EVT_Uint8}
+   ,{"StartHour:", ParameterInputTime,NULL, (void*)(&(Params.StartHour)), EVT_Uint8}
+   ,{"StartMinute:", ParameterInputTime,NULL, (void*)(&(Params.StartMinute)), EVT_Uint8}
+   ,{"RepeatCount:", ParameterInputTime,NULL, (void*)(&(Params.RepeatCount)), EVT_Uint8}
    ,{NULL,NULL,NULL,NULL,EVT_NumOfEl}
 };
 

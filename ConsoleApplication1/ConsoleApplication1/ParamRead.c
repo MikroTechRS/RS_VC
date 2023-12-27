@@ -322,36 +322,36 @@ void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
                     }
                 }
             }
-            else if (CmpString(buff, "StartHour:")) {
-                int temp;
-                if (sscanf(&buff[strlen("StartHour:")], "%d", &temp) == 1) {
-                    if (Params->StartHour != temp) {
-                        //                       Log("StartHour changed from %d to %d", Params->StartHour, temp);
-                        Params->StartHour = temp;
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "StartMinute:")) {
-                int temp;
-                if (sscanf(&buff[strlen("StartMinute:")], "%d", &temp) == 1) {
-                    if (Params->StartMinute != temp) {
-                        //                      Log("StartMinute changed from %d to %d", Params->StartMinute, temp);
-                        Params->StartMinute = temp;
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "RepeatCount:")) {
-                int temp;
-                if (sscanf(&buff[strlen("RepeatCount:")], "%d", &temp) == 1) {
-                    if (Params->RepeatCount != temp) {
-                        //                      Log("StartMinute changed from %d to %d", Params->RepeatCount, temp);
-                        Params->RepeatCount = temp;
-                        settings_changed = true;
-                    }
-                }
-            } //TODO RDD Are all parameters processing?
+            //else if (CmpString(buff, "StartHour:")) {
+            //    int temp;
+            //    if (sscanf(&buff[strlen("StartHour:")], "%d", &temp) == 1) {
+            //        if (Params->StartHour != temp) {
+            //            //                       Log("StartHour changed from %d to %d", Params->StartHour, temp);
+            //            Params->StartHour = temp;
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else if (CmpString(buff, "StartMinute:")) {
+            //    int temp;
+            //    if (sscanf(&buff[strlen("StartMinute:")], "%d", &temp) == 1) {
+            //        if (Params->StartMinute != temp) {
+            //            //                      Log("StartMinute changed from %d to %d", Params->StartMinute, temp);
+            //            Params->StartMinute = temp;
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else if (CmpString(buff, "RepeatCount:")) {
+            //    int temp;
+            //    if (sscanf(&buff[strlen("RepeatCount:")], "%d", &temp) == 1) {
+            //        if (Params->RepeatCount != temp) {
+            //            //                      Log("StartMinute changed from %d to %d", Params->RepeatCount, temp);
+            //            Params->RepeatCount = temp;
+            //            settings_changed = true;
+            //        }
+            //    }
+            //} //TODO RDD Are all parameters processing?
         }
     }
 }
