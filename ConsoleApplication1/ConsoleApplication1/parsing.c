@@ -47,7 +47,7 @@ void ParameterInputName(void* ParametrData,const char* buff, bool * settings_cha
 {
  static char ExperimentName[80] = "Anon";
 //        char stringLog[80];
-      if (CmpString(buff, (char*)(((ParameterInput_t * )ParametrData)->string))) { //  no in setting
+      if (CmpString(buff, (char*)(((ParameterInput_t * )ParametrData)->Name))) { //  no in setting
         strcpy(ExperimentName, &buff[5]);
         ExperimentName[19] = '\0';  // Truncate to 20 chars
         // remove trailing zeroes
@@ -71,9 +71,9 @@ void ParameterInputName(void* ParametrData,const char* buff, bool * settings_cha
 
 void ParameterInputUint8(void* ParametrData, const char* buff, bool* settings_changed)
 {
-    if (CmpString(buff, (char*)(((ParameterInput_t*)ParametrData)->string))) {
+    if (CmpString(buff, (char*)(((ParameterInput_t*)ParametrData)->Name))) {
         int temp = 0;
-        int n = sscanf(&buff[strlen((char*)(((ParameterInput_t*)ParametrData)->string))], "%d", &temp);
+        int n = sscanf(&buff[strlen((char*)(((ParameterInput_t*)ParametrData)->Name))], "%d", &temp);
         //        printf("n=%d\n", n);
         if ((n == 1) && (temp != 0)) {
             if (*((uint8_t*)(((ParameterInput_t*)ParametrData)->parameter)) != temp) {
@@ -114,7 +114,7 @@ void ParameterInputUint32(void* ParametrData, const char* buff, bool* settings_c
 
 //typedef struct   
 //{
-//    const char* string;
+//    const char* Name;
 //    void (*func)(void* ParametrData, const char* buff, bool* settings_changed);
 //    const char* format;
 //    void* parameter;

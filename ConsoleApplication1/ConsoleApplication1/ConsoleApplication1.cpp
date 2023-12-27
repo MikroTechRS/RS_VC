@@ -1,4 +1,4 @@
-﻿// ConsoleApplication1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+// ConsoleApplication1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 // Текстовый файл должен быть в папке "ConsoleApplication1"
 
 //#include <iostream>
@@ -9,7 +9,7 @@
 //}
 
 int main()
-{
+{   //---------Test------------------
 	FILE *fp;
    //std::cout << "Hello World!\n";
    char fn[] = "SettingsFileExample.txt";
