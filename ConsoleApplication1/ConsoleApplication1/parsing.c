@@ -169,13 +169,10 @@ ParameterInput_t ParameterInput[] =
 
 void mainParameterInputA(const char* buff, bool * settings_changed)
 {
-    uint8_t i;
-    i=0;
-    while (ParameterInput[i].string!=NULL)
-        {ParameterInput[i].func(ParameterInput+i,buff,settings_changed);
-         i++;
-        };
-
-
+    uint8_t i=0;
+    while (ParameterInput[i].string!=NULL){
+        ParameterInput[i].func(ParameterInput+i,buff,settings_changed);
+        i++;
+    };
 };
 
