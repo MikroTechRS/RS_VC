@@ -148,6 +148,7 @@ ParameterInput_t ParameterInput[] =
     {"name:",ParameterInputName,NULL,(void*)Params.Name,EVT_string}
    ,{"repeat:",ParameterInputUint8,NULL,(void*)(&(Params.Base.Iterations)),EVT_Uint8}
    ,{"samplespersec:",ParameterInputSamplespersec,NULL,(void*)(&(Params.Base.SamplesPerSec)),EVT_Uint8}
+   ,{"baseline:",ParameterInputPhase,NULL,(void*)(&(Params.Baseline)),EVT_Uint8}
 
    ,{"T1:",ParameterInputUint32,NULL,(void*)(&(Params.T1)),EVT_Uint32}
    ,{"T2:",ParameterInputUint32,NULL,(void*)(&(Params.T2)),EVT_Uint32}
@@ -156,8 +157,6 @@ ParameterInput_t ParameterInput[] =
    ,{"T5:",ParameterInputUint32,NULL,(void*)(&(Params.T5)),EVT_Uint32}
    ,{"T6:",ParameterInputUint32,NULL,(void*)(&(Params.T6)),EVT_Uint32}
    ,{"T7:",ParameterInputUint32,NULL,(void*)(&(Params.T7)),EVT_Uint32}
-
-   ,{"baseline:",ParameterInputPhase,NULL,(void*)(&(Params.Baseline)),EVT_Uint8}
 
 
    ,{NULL,NULL,NULL,NULL,EVT_NumOfEl}
