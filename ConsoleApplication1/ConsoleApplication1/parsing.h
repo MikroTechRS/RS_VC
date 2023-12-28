@@ -9,9 +9,10 @@
     ,char*: EVT_string \
     ,uint8_t: EVT_Uint8 \
     ,uint32_t:EVT_Uint32 \
+    ,phase_t:EVT_Phase\
 )
 
-typedef enum {EVT_string, EVT_Uint8,EVT_Uint32, EVT_NumOfEl} E_VariableType;
+typedef enum {EVT_string, EVT_Uint8,EVT_Uint32,EVT_Phase ,EVT_NumOfEl } E_VariableType;
 
 typedef struct
 {

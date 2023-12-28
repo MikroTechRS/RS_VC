@@ -148,7 +148,13 @@ ParameterInput_t ParameterInput[] =
     {"name:",ParameterInputName,NULL,(void*)Params.Name,EVT_string}
    ,{"repeat:",ParameterInputUint8,NULL,(void*)(&(Params.Base.Iterations)),EVT_Uint8}
    ,{"samplespersec:",ParameterInputSamplespersec,NULL,(void*)(&(Params.Base.SamplesPerSec)),EVT_Uint8}
-   ,{"baseline:",ParameterInputPhase,NULL,(void*)(&(Params.Baseline)),EVT_Uint8}
+   ,{"baseline:",ParameterInputPhase,NULL,(void*)(&(Params.Baseline)),EVT_Phase}
+
+   ,{"absorb:",ParameterInputPhase,NULL,(void*)(&(Params.Absorb)),EVT_Phase}
+   ,{"pause:", ParameterInputPhase,NULL,(void*)(&(Params.Pause)), EVT_Phase}
+   ,{"desorb:",ParameterInputPhase,NULL,(void*)(&(Params.Desorb)),EVT_Phase}
+   ,{"flush:", ParameterInputPhase,NULL,(void*)(&(Params.Flush)), EVT_Phase}
+   ,{"wait:",  ParameterInputPhase,NULL,(void*)(&(Params.Wait)),  EVT_Phase}
 
    ,{"T1:",ParameterInputUint32,NULL,(void*)(&(Params.T1)),EVT_Uint32}
    ,{"T2:",ParameterInputUint32,NULL,(void*)(&(Params.T2)),EVT_Uint32}
@@ -157,7 +163,6 @@ ParameterInput_t ParameterInput[] =
    ,{"T5:",ParameterInputUint32,NULL,(void*)(&(Params.T5)),EVT_Uint32}
    ,{"T6:",ParameterInputUint32,NULL,(void*)(&(Params.T6)),EVT_Uint32}
    ,{"T7:",ParameterInputUint32,NULL,(void*)(&(Params.T7)),EVT_Uint32}
-
 
    ,{NULL,NULL,NULL,NULL,EVT_NumOfEl}
 };

@@ -198,52 +198,55 @@ void UpdateParamsFromFile(Params_t* Params, FILE* fp_h) {
             //    }
             //}
             //else 
-            if (CmpString(buff, "absorb:")) {
-                if (GetPhase(&buff[7], &Absorb)) {
-                    if (PhaseChanged(&Params->Absorb, &Absorb)) {
-                        Params->Absorb = Absorb;
-                        //                       Log("Absorb changed to \"%s\"", &buff[7]);
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "pause:")) {
-                if (GetPhase(&buff[6], &Pause)) {
-                    if (PhaseChanged(&Params->Pause, &Pause)) {
-                        Params->Pause = Pause;
-                        //                       Log("Pause changed to \"%s\"", &buff[6]);
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "desorb:")) {
-                if (GetPhase(&buff[7], &Desorb)) {
-                    if (PhaseChanged(&Params->Desorb, &Desorb)) {
-                        Params->Desorb = Desorb;
-                        //                       Log("Desorb changed to \"%s\"", &buff[7]);
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "flush:")) {
-                if (GetPhase(&buff[6], &Flush)) {
-                    if (PhaseChanged(&Params->Flush, &Flush)) {
-                        Params->Flush = Flush;
-                        //                        Log("Flush changed to \"%s\"", &buff[6]);
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "wait:")) {
-                if (GetPhase(&buff[5], &Wait)) {
-                    if (PhaseChanged(&Params->Wait, &Wait)) {
-                        Params->Wait = Wait;
-                        //                      Log("Wait changed to \"%s\"", &buff[5]);
-                        settings_changed = true;
-                    }
-                }
-            }
-            else if (CmpString(buff, "switchoffsec:")) {
+            //if (CmpString(buff, "absorb:")) {
+            //    if (GetPhase(&buff[7], &Absorb)) {
+            //        if (PhaseChanged(&Params->Absorb, &Absorb)) {
+            //            Params->Absorb = Absorb;
+            //            //                       Log("Absorb changed to \"%s\"", &buff[7]);
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            // else 
+            //if (CmpString(buff, "pause:")) {
+            //    if (GetPhase(&buff[6], &Pause)) {
+            //        if (PhaseChanged(&Params->Pause, &Pause)) {
+            //            Params->Pause = Pause;
+            //            //                       Log("Pause changed to \"%s\"", &buff[6]);
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else if (CmpString(buff, "desorb:")) {
+            //    if (GetPhase(&buff[7], &Desorb)) {
+            //        if (PhaseChanged(&Params->Desorb, &Desorb)) {
+            //            Params->Desorb = Desorb;
+            //            //                       Log("Desorb changed to \"%s\"", &buff[7]);
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else if (CmpString(buff, "flush:")) {
+            //    if (GetPhase(&buff[6], &Flush)) {
+            //        if (PhaseChanged(&Params->Flush, &Flush)) {
+            //            Params->Flush = Flush;
+            //            //                        Log("Flush changed to \"%s\"", &buff[6]);
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else if (CmpString(buff, "wait:")) {
+            //    if (GetPhase(&buff[5], &Wait)) {
+            //        if (PhaseChanged(&Params->Wait, &Wait)) {
+            //            Params->Wait = Wait;
+            //            //                      Log("Wait changed to \"%s\"", &buff[5]);
+            //            settings_changed = true;
+            //        }
+            //    }
+            //}
+            //else 
+                
+            if (CmpString(buff, "switchoffsec:")) {
                 int temp;
                 if (sscanf(&buff[13], "%d", &temp) == 1) {
                     if (Params->Base.SwitchOffSec != temp) {
